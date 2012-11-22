@@ -5,7 +5,7 @@ Plugin URI: https://github.com/trendwerk/multiple-content-blocks/
 Description: Allow for more content blocks in WordPress than just the one.
 Version: 3.0
 Author: Ontwerpstudio Trendwerk
-Author URI: http://www.trendwerk.nl/
+Author URI: https://github.com/trendwerk/
 */
 
 define('MCB_URL',plugins_url('/',__FILE__));
