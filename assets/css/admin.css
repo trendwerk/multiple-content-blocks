@@ -1,0 +1,6 @@
+#multiple-content-blocks-box .wp-editor-wrap {
+	margin: 0px 0px 30px 0px;
+}
+	#multiple-content-blocks-box .wp-editor-wrap iframe {
+		background: #fff;
+	}

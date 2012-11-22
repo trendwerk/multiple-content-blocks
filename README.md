@@ -13,7 +13,7 @@ Installation
 
 How to use
 --------------
-Place one of the template tags in a WordPress template. When that template is used on a page, an extra editor will appear in the back-end.
+Place one of the template tags in a WordPress template. When that template is used, an extra editor will appear in the back-end.
 
 
 Template tags
