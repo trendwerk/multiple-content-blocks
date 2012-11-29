@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Multiple content blocks\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-22 15:30+0100\n"
-"PO-Revision-Date: 2012-11-22 15:41+0100\n"
+"POT-Creation-Date: 2012-11-29 10:51+0100\n"
+"PO-Revision-Date: 2012-11-29 10:53+0100\n"
 "Last-Translator: Harold <harold@trendwerk.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,13 @@ msgstr ""
 msgid "Multiple content blocks"
 msgstr "Multiple content blocks"
 
-#: assets/inc/class.MCB.php:50
-msgid "The template that this post uses does not contain any content blocks."
-msgstr "De template die gebruikt wordt door dit bericht heeft geen extra content blocks."
+#: assets/inc/class.MCB.php:106
+#, php-format
+msgid "Your server doesn't allow remote HTTP requests using <a href=\"http://codex.wordpress.org/Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a>. You will have to <a href=\"%1$s\" target=\"_blank\">visit this page</a> manually to update which blocks are used on each page."
+msgstr "Je server ondersteund geen remote HTTP requests door middel van <a href=\"http://codex.wordpress.org/Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a>. Je zal <a href=\"%1$s\" target=\"_blank\">deze pagina</a> handmatig moeten bezoeken om bij te werken welke content blocks er op elke pagina gebruikt worden."
 
+#~ msgid ""
+#~ "The template that this post uses does not contain any content blocks."
+#~ msgstr ""
+#~ "De template die gebruikt wordt door dit bericht heeft geen extra content "
+#~ "blocks."
