@@ -41,13 +41,17 @@ class MCB {
 	function meta_box() {
 		global $post;
 		
-		if($blocks = $this->get_blocks($post->ID)) :
+		$blocks = $this->get_blocks($post->ID);
+		if(is_wp_error($blocks)) :
+			echo '<p>'.$blocks->get_error_message().'<p>';
+			$blocks = $this->get_blocks($post->ID,false);
+		endif;
+		
+		if($blocks) :
 			foreach($blocks as $id=>$name) :
 				echo '<p><strong>'.$name.'</strong></p>';
 				wp_editor(get_post_meta($post->ID,'mcb-'.$id,true),$id);
 			endforeach;
-		else :
-			echo '<p>'.__('The template that this post uses does not contain any content blocks.','mcb').'</p>';
 		endif;
 	}
 	
@@ -58,7 +62,11 @@ class MCB {
 	 */
 	function save_blocks($post_id) {
 		if(!wp_is_post_revision($post_id) && !wp_is_post_autosave($post_id) && (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')) :
-			if($blocks = $this->get_blocks($post_id)) :
+		
+			$blocks = $this->get_blocks($post_id);
+			if(is_wp_error($blocks)) $blocks = $this->get_blocks($post_id,false);
+			
+			if($blocks) :
 				foreach($blocks as $id=>$name) :
 					if($_POST[$id]) :
 						update_post_meta($post_id,'mcb-'.$id,apply_filters('content_save_pre',$_POST[$id]));
@@ -77,20 +85,28 @@ class MCB {
 	 */
 	function get_blocks($post_id,$refresh=true) {
 		if($post_id) :
-			if($refresh) $this->refresh_blocks($post_id);
+			if($refresh) :
+				$refreshed = $this->refresh_blocks($post_id);
+				if(is_wp_error($refreshed)) return $refreshed;
+			endif;
 			
 			return get_post_meta($post_id,'mcb-blocks',true);
 		endif;
 	}
 	
 	/**
-	 * Update which MCB's there are on a post or page
+	 * Update which MCB's there are on a post or page by visiting it
 	 *
 	 * @param int $post_id
 	 */
-	function refresh_blocks($post_id) {
-		delete_post_meta($post_id,'mcb-blocks');
-		wp_remote_get(get_permalink($post_id));
+	function refresh_blocks($post_id) {		
+		$request = wp_remote_get(get_permalink($post_id));
+		if(is_wp_error($request) || $request['response']['code'] != 200) :			
+			//HTTP Request failed: Tell the user to do this manually
+			return new WP_Error('mcb',sprintf(__('Your server doesn\'t allow remote HTTP requests using <a href="http://codex.wordpress.org/Function_API/wp_remote_get" target="_blank">wp_remote_get</a>. You will have to <a href="%1$s" target="_blank">visit this page</a> manually to update which blocks are used on each page.','mcb'),get_permalink($post_id)));
+		endif;
+		
+		return true;
 	}
 }
 new MCB;

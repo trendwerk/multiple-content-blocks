@@ -60,4 +60,13 @@ function mcb_block_exists($post_id,$name) {
 	
 	return false;
 }
+
+/**
+ * Reset which blocks are used when visiting the page
+ */
+function mcb_refresh_blocks() {
+	global $post;
+	delete_post_meta($post->ID,'mcb-blocks');
+}
+add_action('wp_head','mcb_refresh_blocks');
 ?>
