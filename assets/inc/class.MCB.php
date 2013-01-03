@@ -61,7 +61,7 @@ class MCB {
 	 * @param int $post_id
 	 */
 	function save_blocks($post_id) {
-		if(!wp_is_post_revision($post_id) && !wp_is_post_autosave($post_id) && (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')) :
+		if(!wp_is_post_revision($post_id) && !wp_is_post_autosave($post_id) && ((!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest'))) :
 		
 			$blocks = $this->get_blocks($post_id);
 			if(is_wp_error($blocks)) $blocks = $this->get_blocks($post_id,false);
