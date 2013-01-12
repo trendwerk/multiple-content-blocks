@@ -8,8 +8,8 @@
  *
  * @param string $name The name of the block
  */
-function the_block($name) {
-	echo get_the_block($name);
+function the_block($name,$post_id=null) {
+	echo get_the_block($name,$post_id);
 }
 
 /**
@@ -17,12 +17,15 @@ function the_block($name) {
  *
  * @param string $name The name of the block
  */
-function get_the_block($name) {
+function get_the_block($name,$post_id=null) {
 	if(!empty($name)) :
-		global $post;
-		mcb_register_block($post->ID,$name);
+		if(empty($post_id)) {
+			global $post;
+			$post_id = $post->ID;
+		}
+		mcb_register_block($post_id,$name);
 		
-		return apply_filters('the_content',get_post_meta($post->ID,'mcb-'.sanitize_title($name),true));
+		return apply_filters('the_content',get_post_meta($post_id,'mcb-'.sanitize_title($name),true));
 	endif;
 }
 
