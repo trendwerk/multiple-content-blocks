@@ -66,7 +66,7 @@ function mcb_block_exists($post_id,$name) {
  */
 function mcb_refresh_blocks() {
 	global $post;
-	delete_post_meta($post->ID,'mcb-blocks');
+	if(isset($post)) delete_post_meta($post->ID,'mcb-blocks');
 }
 add_action('wp_head','mcb_refresh_blocks');
 ?>
