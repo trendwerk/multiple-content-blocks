@@ -32,7 +32,7 @@ class MCB {
 	function add_meta_box() {
 		global $post;
 		
-		if($this->get_blocks($post->ID)) add_meta_box('multiple-content-blocks-box',__('Multiple content blocks','mcb'),array($this,'meta_box'),$post->post_type,'normal','high');
+		if(!is_wp_error($this->get_blocks($post->ID))) add_meta_box('multiple-content-blocks-box',__('Multiple content blocks','mcb'),array($this,'meta_box'),$post->post_type,'normal','high');
 	}
 	
 	/**
@@ -61,8 +61,7 @@ class MCB {
 	 * @param int $post_id
 	 */
 	function save_blocks($post_id) {
-		if(!wp_is_post_revision($post_id) && !wp_is_post_autosave($post_id) && ((!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest'))) :
-		
+		if(!wp_is_post_revision($post_id) && !wp_is_post_autosave($post_id) && ((!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || @$_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest'))) :
 			$blocks = $this->get_blocks($post_id);
 			if(is_wp_error($blocks)) $blocks = $this->get_blocks($post_id,false);
 			
