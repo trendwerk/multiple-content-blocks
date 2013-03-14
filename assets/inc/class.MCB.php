@@ -32,7 +32,8 @@ class MCB {
 	function add_meta_box() {
 		global $post;
 		
-		if($this->get_blocks($post->ID)) add_meta_box('multiple-content-blocks-box',__('Multiple content blocks','mcb'),array($this,'meta_box'),$post->post_type,'normal','high');
+		$type = get_post_type_object($post->post_type);
+		if($type->public && $this->get_blocks($post->ID)) add_meta_box('multiple-content-blocks-box',__('Multiple content blocks','mcb'),array($this,'meta_box'),$post->post_type,'normal','high');
 	}
 	
 	/**
