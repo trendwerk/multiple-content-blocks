@@ -3,8 +3,8 @@ Contributors: Ontwerpstudio Trendwerk, Harold Angenent
 Donate link: http://plugins.trendwerk.nl
 Tags: multiple,content,blocks,multiplecontent,page,pageblocks,columns,custom
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 3.0.1
+Tested up to: 3.5.1
+Stable tag: 3.0.2
 
 Allow for more content blocks in WordPress than just the one.
 
