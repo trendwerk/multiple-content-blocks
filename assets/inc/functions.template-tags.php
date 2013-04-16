@@ -7,6 +7,7 @@
  * Display a block
  *
  * @param string $name The name of the block
+ * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
  */
 function the_block($name,$type='editor') {
 	echo get_the_block($name,$type);
@@ -16,6 +17,7 @@ function the_block($name,$type='editor') {
  * Return a block
  *
  * @param string $name The name of the block
+ * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
  */
 function get_the_block($name,$type='editor') {
 	if(!empty($name)) :
@@ -31,6 +33,7 @@ function get_the_block($name,$type='editor') {
  *
  * @param int $post_id
  * @param string $name The name of the block
+ * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
  */
 function mcb_register_block($post_id,$name,$type='editor') {
 	if(!mcb_block_exists($post_id,$name,$type)) {
@@ -48,6 +51,7 @@ function mcb_register_block($post_id,$name,$type='editor') {
  *
  * @param int $post_id
  * @param string $name The name of the block
+ * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
  * @return bool
  */
 function mcb_block_exists($post_id,$name,$type='editor') {
