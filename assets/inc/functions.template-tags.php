@@ -29,6 +29,32 @@ function get_the_block($name,$type='editor') {
 }
 
 /**
+ * Display a block without applying filters
+ *
+ * @param string $name The name of the block
+ * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
+ */
+function the_block_without_filters($name,$type='editor') {
+	echo get_the_block_without_filters($name,$type);
+}
+
+/**
+ * Return a block without applying filters
+ *
+ * @param string $name The name of the block
+ * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
+ */
+function get_the_block_without_filters($name,$type='editor') {
+	if(!empty($name)) :
+		global $post;
+		mcb_register_block($post->ID,$name,$type);
+		
+		$meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name));
+		return ($meta && count($meta) > 0) ? $meta[0] : '';
+	endif;
+}
+
+/**
  * Register a block if it does not exist already
  *
  * @param int $post_id
