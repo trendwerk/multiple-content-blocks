@@ -44,7 +44,7 @@ class MCB {
 		
 		$blocks = $this->get_blocks($post->ID);
 		if(is_wp_error($blocks)) :
-			echo '<p>'.$blocks->get_error_message().'<p>';
+			echo '<p>'.$blocks->get_error_message().'</p>';
 			$blocks = $this->get_blocks($post->ID,false);
 		endif;
 		
