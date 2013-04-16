@@ -4,3 +4,7 @@
 	#multiple-content-blocks-box .wp-editor-wrap iframe {
 		background: #fff;
 	}
+	
+	#multiple-content-blocks-box input[type=text] {
+	  width:100%;
+	}
