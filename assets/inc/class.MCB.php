@@ -49,9 +49,21 @@ class MCB {
 		endif;
 		
 		if($blocks) :
-			foreach($blocks as $id=>$name) :
+			foreach($blocks as $id=>$block) :
+			  
+			  if (is_array($block)) :
+			    $name = $block['name'];
+			    $type = $block['type'];
+			  else :
+			    $name = $block;
+			    $type = 'editor';
+			  endif;
 				echo '<p><strong>'.$name.'</strong></p>';
-				wp_editor(get_post_meta($post->ID,'mcb-'.$id,true),$id);
+				if ($type == 'one-liner') :
+				  echo '<input type="text" name="' . $id . '" value="' . htmlentities($post->post_content) . '" />';
+			  else :
+				  wp_editor(get_post_meta($post->ID,'mcb-'.$id,true),$id);
+				endif;
 			endforeach;
 		endif;
 	}
