@@ -44,14 +44,26 @@ class MCB {
 		
 		$blocks = $this->get_blocks($post->ID);
 		if(is_wp_error($blocks)) :
-			echo '<p>'.$blocks->get_error_message().'<p>';
+			echo '<p>'.$blocks->get_error_message().'</p>';
 			$blocks = $this->get_blocks($post->ID,false);
 		endif;
 		
 		if($blocks) :
-			foreach($blocks as $id=>$name) :
+			foreach($blocks as $id=>$block) :
+			  
+			  if (is_array($block)) :
+			    $name = $block['name'];
+			    $type = $block['type'];
+			  else :
+			    $name = $block;
+			    $type = 'editor';
+			  endif;
 				echo '<p><strong>'.$name.'</strong></p>';
-				wp_editor(get_post_meta($post->ID,'mcb-'.$id,true),$id);
+				if ($type == 'one-liner') :
+				  echo '<input type="text" name="' . $id . '" value="' . htmlentities(get_post_meta($post->ID,'mcb-'.$id,true)) . '" />';
+			  else :
+				  wp_editor(get_post_meta($post->ID,'mcb-'.$id,true),$id);
+				endif;
 			endforeach;
 		endif;
 	}
