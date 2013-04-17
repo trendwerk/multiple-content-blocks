@@ -23,3 +23,9 @@ This will display the $name content block
 
 	get_the_block($name)
 This will get $name content block's content, for you to process
+
+Additional options
+--------------
+	the_block($name,'one-liner')
+	get_the_block($name,'one-liner')
+Won't display a WYSIWYG editor, but a plain one line text field (input type="text")
