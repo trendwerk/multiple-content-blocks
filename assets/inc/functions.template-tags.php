@@ -7,50 +7,41 @@
  * Display a block
  *
  * @param string $name The name of the block
- * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
+ *
+ * @param array $args optional arguments. (see below)
+ *   array['type']          string The name of the style, either 'editor' or 'one-liner'. Defaults to 'editor'.
+ *   array['apply_filters'] bool Whether to apply WordPress content filters. Defaults to true.
+ *
+ * @return string
  */
-function the_block($name,$type='editor') {
-	echo get_the_block($name,$type);
+function the_block($name,$args=array()) {
+	echo get_the_block($name,$args);
 }
 
 /**
  * Return a block
  *
  * @param string $name The name of the block
- * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
+ *
+ * @param array $args optional arguments. (see below)
+ *   array['type']          string The name of the style, either 'editor' or 'one-liner'. Defaults to 'editor'.
+ *   array['apply_filters'] bool Whether to apply WordPress content filters. Defaults to true.
+ *
+ * @return string
  */
-function get_the_block($name,$type='editor') {
+function get_the_block($name,$args=array()) {
 	if(!empty($name)) :
 		global $post;
-		mcb_register_block($post->ID,$name,$type);
-		
-		return apply_filters('the_content',get_post_meta($post->ID,'mcb-'.sanitize_title($name),true));
-	endif;
-}
+    $args = wp_parse_args($args, array('type' => 'editor', 'apply_filters' => true));
+		mcb_register_block($post->ID,$name,$args['type']);
 
-/**
- * Display a block without applying filters
- *
- * @param string $name The name of the block
- * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
- */
-function the_block_without_filters($name,$type='editor') {
-	echo get_the_block_without_filters($name,$type);
-}
-
-/**
- * Return a block without applying filters
- *
- * @param string $name The name of the block
- * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
- */
-function get_the_block_without_filters($name,$type='editor') {
-	if(!empty($name)) :
-		global $post;
-		mcb_register_block($post->ID,$name,$type);
-		
-		$meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name));
-		return ($meta && count($meta) > 0) ? $meta[0] : '';
+    $meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
+    if ($args['apply_filters'])
+      return apply_filters('the_content',$meta);
+    else if ($meta && count($meta) > 0)
+      return $meta;
+    else
+      return '';
 	endif;
 }
 
