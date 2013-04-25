@@ -7,10 +7,7 @@
  * Display a block
  *
  * @param string $name The name of the block
- *
- * @param array $args optional arguments. (see below)
- *   array['type']          string The name of the style, either 'editor' or 'one-liner'. Defaults to 'editor'.
- *   array['apply_filters'] bool Whether to apply WordPress content filters. Defaults to true.
+ * @param array $args Optional. Additional arguments, see get_the_block for more information.
  *
  * @return string
  */
@@ -22,8 +19,7 @@ function the_block($name,$args=array()) {
  * Return a block
  *
  * @param string $name The name of the block
- *
- * @param array $args optional arguments. (see below)
+ * @param array $args Optional. Additional arguments
  *   array['type']          string The name of the style, either 'editor' or 'one-liner'. Defaults to 'editor'.
  *   array['apply_filters'] bool Whether to apply WordPress content filters. Defaults to true.
  *
@@ -32,17 +28,22 @@ function the_block($name,$args=array()) {
 function get_the_block($name,$args=array()) {
 	if(!empty($name)) :
 		global $post;
-    $args = wp_parse_args($args, array('type' => 'editor', 'apply_filters' => true));
+		
+		$defaults = array(
+			'type' => 'editor',
+			'apply_filters' => true
+		);
+	    $args = wp_parse_args($args, $defaults);
+	    
 		mcb_register_block($post->ID,$name,$args['type']);
-
-    $meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
-    if ($args['apply_filters'])
-      return apply_filters('the_content',$meta);
-    else if ($meta && count($meta) > 0)
-      return $meta;
-    else
-      return '';
+		
+	    $meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
+	    
+	    if($args['apply_filters']) return apply_filters('the_content',$meta);
+	    if($meta && count($meta) > 0) return $meta;
 	endif;
+	
+    return '';
 }
 
 /**
@@ -74,15 +75,16 @@ function mcb_register_block($post_id,$name,$type='editor') {
 function mcb_block_exists($post_id,$name,$type='editor') {
 	$blocks = get_post_meta($post_id,'mcb-blocks',true);
 	if(is_array($blocks)) :
-	  if(is_array($blocks[sanitize_title($name)])) :
-	    $comparable_name = $blocks[sanitize_title($name)]['name'];
-	    $comparable_type = $blocks[sanitize_title($name)]['type'];
-	  else :
-	    $comparable_name = $blocks[sanitize_title($name)];
-	    $comparable_type = 'editor';
-	  endif;
-	  if($comparable_name == $name && $comparable_type == $type) :
-	    return true;
+		if(is_array($blocks[sanitize_title($name)])) :
+	  		$comparable_name = $blocks[sanitize_title($name)]['name'];
+			$comparable_type = $blocks[sanitize_title($name)]['type'];
+		else :
+			$comparable_name = $blocks[sanitize_title($name)];
+			$comparable_type = 'editor';
+		endif;
+		
+		if($comparable_name == $name && $comparable_type == $type) :
+	    	return true;
 		endif;
 	endif;
 	

@@ -26,6 +26,9 @@ This will get $name content block's content, for you to process
 
 Additional options
 --------------
-	the_block($name,'one-liner')
-	get_the_block($name,'one-liner')
-Won't display a WYSIWYG editor, but a plain one line text field (input type="text")
+	the_block($name,array(
+		'type' => 'one-liner',
+		'apply_filters' => false
+	))
+- Won't display a WYSIWYG editor, but a plain one line text field (input type="text").
+- Won't apply filters
