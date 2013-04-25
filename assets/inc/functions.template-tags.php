@@ -33,17 +33,17 @@ function get_the_block($name,$args=array()) {
 			'type' => 'editor',
 			'apply_filters' => true
 		);
-	    $args = wp_parse_args($args, $defaults);
-	    
+		$args = wp_parse_args($args, $defaults);
+		
 		mcb_register_block($post->ID,$name,$args['type']);
 		
-	    $meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
-	    
-	    if($args['apply_filters']) return apply_filters('the_content',$meta);
-	    if($meta && count($meta) > 0) return $meta;
+		$meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
+		
+		if($args['apply_filters']) return apply_filters('the_content',$meta);
+		if($meta && count($meta) > 0) return $meta;
 	endif;
 	
-    return '';
+	return '';
 }
 
 /**
