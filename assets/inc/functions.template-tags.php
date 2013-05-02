@@ -74,7 +74,7 @@ function mcb_register_block($post_id,$name,$type='editor') {
  */
 function mcb_block_exists($post_id,$name,$type='editor') {
 	$blocks = get_post_meta($post_id,'mcb-blocks',true);
-	if(is_array($blocks) && in_array(sanitize_title($name), $blocks) :
+	if(is_array($blocks) && in_array(sanitize_title($name), $blocks)) :
 		if(is_array($blocks[sanitize_title($name)])) :
 	  		$comparable_name = $blocks[sanitize_title($name)]['name'];
 			$comparable_type = $blocks[sanitize_title($name)]['type'];
