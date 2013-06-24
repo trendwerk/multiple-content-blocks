@@ -38,6 +38,7 @@ function get_the_block($name,$args=array()) {
 		mcb_register_block($post->ID,$name,$args['type']);
 		
 		$meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
+		$meta = utf8_decode($meta);
 		
 		if($args['apply_filters']) return apply_filters('the_content',$meta);
 		if($meta && count($meta) > 0) return $meta;
