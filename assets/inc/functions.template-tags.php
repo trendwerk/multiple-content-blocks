@@ -40,7 +40,7 @@ function get_the_block($name,$args=array()) {
 		$meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
 		
 		if($args['apply_filters']) return apply_filters('the_content',$meta);
-		if($meta && count($meta) > 0) return $meta;
+		if($meta && count($meta) > 0) return htmlentities($meta,null,'UTF-8',false);
 	endif;
 	
 	return '';

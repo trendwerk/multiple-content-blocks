@@ -60,7 +60,7 @@ class MCB {
 			  endif;
 				echo '<p><strong>'.$name.'</strong></p>';
 				if ($type == 'one-liner') :
-				  echo '<input type="text" name="' . $id . '" value="' . htmlentities(get_post_meta($post->ID,'mcb-'.$id,true)) . '" />';
+				  echo '<input type="text" name="' . $id . '" value="' . htmlentities(get_post_meta($post->ID,'mcb-'.$id,true),null,'UTF-8',false) . '" />';
 			  else :
 				  wp_editor(get_post_meta($post->ID,'mcb-'.$id,true),$id);
 				endif;
