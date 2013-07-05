@@ -47,6 +47,32 @@ function get_the_block($name,$args=array()) {
 }
 
 /**
+ * Check if a block already exists from theme.
+ *
+ * @param string $name The name of the block
+ * @param array $args Optional. Additional arguments
+ *   array['type']          string The name of the style, either 'editor' or 'one-liner'. Defaults to 'editor'.
+ *
+ * @return boolean
+ */
+function block_present($name,$args=array()) {
+	if(!empty($name) ) {
+		global $post;
+		
+		$defaults = array(
+			'type' => 'editor',
+			'apply_filters' => true
+		);
+		
+		 $args = wp_parse_args($args, $defaults);		
+		 mcb_register_block($post->ID,$name,$args['type']);
+		 $meta = get_post_meta($post->ID,'mcb-'.sanitize_title($name),true);
+		 if($meta && count($meta) > 0) return true; else return false;
+		 
+	}
+}
+
+/**
  * Register a block if it does not exist already
  *
  * @param int $post_id
