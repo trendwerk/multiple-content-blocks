@@ -28,7 +28,9 @@ Additional options
 --------------
 	the_block($name,array(
 		'type' => 'one-liner',
-		'apply_filters' => false
+		'apply_filters' => false,
+		'htmlentities' => false
 	))
 - Won't display a WYSIWYG editor, but a plain one line text field (input type="text").
 - Won't apply filters
+- Won't apply htmlentities() when apply_filters = false.
