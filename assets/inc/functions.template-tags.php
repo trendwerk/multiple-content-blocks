@@ -31,7 +31,8 @@ function get_the_block($name,$args=array()) {
 		
 		$defaults = array(
 			'type' => 'editor',
-			'apply_filters' => true
+			'apply_filters' => true,
+			'htmlentities' => true
 		);
 		$args = wp_parse_args($args, $defaults);
 		
@@ -39,8 +40,11 @@ function get_the_block($name,$args=array()) {
 		
 		$meta = get_post_meta($post->ID,'_mcb-'.sanitize_title($name),true);
 		
-		if($args['apply_filters']) return apply_filters('the_content',$meta);
-		if($meta && count($meta) > 0) return htmlentities($meta,null,'UTF-8',false);
+		if($meta && count($meta) > 0) {
+			if($args['apply_filters']) return apply_filters('the_content',$meta);
+			if($args['htmlentities']) return htmlentities($meta,null,'UTF-8',false);
+			return $meta;
+		}
 	endif;
 	
 	return '';
