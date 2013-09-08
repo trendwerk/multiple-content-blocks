@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Multiple content blocks\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 10:51+0100\n"
-"PO-Revision-Date: 2012-11-29 10:53+0100\n"
+"POT-Creation-Date: 2013-09-08 17:33+0100\n"
+"PO-Revision-Date: 2013-09-08 17:33+0100\n"
 "Last-Translator: Harold <harold@trendwerk.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -11,16 +11,128 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ../../\n"
+"X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: assets/inc/class.MCB.php:35
+#: assets/inc/class.MCB.php:28 assets/inc/class.MCB.php:109
+msgid "Show"
+msgstr "Toon"
+
+#: assets/inc/class.MCB.php:29
+msgid "Hide"
+msgstr "Verberg"
+
+#: assets/inc/class.MCB.php:30
+msgid ""
+"Are you sure you want to delete this block entirely? It will be lost forever!"
+msgstr ""
+"Weet je zeker dat je deze block compleet wilt verwijderen? Hij zal voor "
+"altijd verloren gaan!"
+
+#: assets/inc/class.MCB.php:41 assets/inc/class.MCBSettings.php:46
+#: assets/inc/class.MCBSettings.php:56
 msgid "Multiple content blocks"
 msgstr "Multiple content blocks"
 
-#: assets/inc/class.MCB.php:106
+#: assets/inc/class.MCB.php:43
+msgid "Multiple content blocks (inactive)"
+msgstr "Multiple content blocks (inactief)"
+
+#: assets/inc/class.MCB.php:78
+msgid "Help! These are not the right blocks."
+msgstr "Help! Dit zijn niet de juiste blocks."
+
+#: assets/inc/class.MCB.php:79
 #, php-format
-msgid "Your server doesn't allow remote HTTP requests using <a href=\"http://codex.wordpress.org/Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a>. You will have to <a href=\"%1$s\" target=\"_blank\">visit this page</a> manually to update which blocks are used on each page."
-msgstr "Je server ondersteund geen remote HTTP requests door middel van <a href=\"http://codex.wordpress.org/Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a>. Je zal <a href=\"%1$s\" target=\"_blank\">deze pagina</a> handmatig moeten bezoeken om bij te werken welke content blocks er op elke pagina gebruikt worden."
+msgid ""
+"That's right. When you have HTTP requests switched off, you have to refresh "
+"the blocks manually by visiting the page. <a class=\"button-secondary\" "
+"target=\"_blank\" href=\"%1$s\">Refresh</a>"
+msgstr ""
+"Inderdaad. Wanneer je HTTP requests uit hebt staan, moet je de blocks "
+"handmatig vernieuwen door de pagina te bezoeken. <a class=\"button-secondary"
+"\" target=\"_blank\" href=\"%1$s\">Vernieuw</a>"
+
+#: assets/inc/class.MCB.php:98
+msgid "Block ID"
+msgstr "Block ID"
+
+#: assets/inc/class.MCB.php:99
+msgid "Actions"
+msgstr "Acties"
+
+#: assets/inc/class.MCB.php:109
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: assets/inc/class.MCB.php:113
+msgid ""
+"The content displayed below will not be saved. This is just for recovery "
+"purposes."
+msgstr ""
+"De onderstaande content zal niet opgeslagen worden. Dit dient alleen om "
+"content te herstellen."
+
+#: assets/inc/class.MCB.php:184
+#, php-format
+msgid ""
+"HTTP requests using <a href=\"http://codex.wordpress.org/Function_API/"
+"wp_remote_get\" target=\"_blank\">wp_remote_get</a> do not seem to work. "
+"This means the blocks cannot be initialized automatically. You can turn off "
+"HTTP requests altogether on the <a href=\"%1$s\">options page</a> and "
+"manually update your blocks."
+msgstr ""
+"HTTP requests door middel van <a href=\"http://codex.wordpress.org/"
+"Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a> lijken niet "
+"te werken. Dit betekent dat de blokken niet automatisch geïnitialiseerd "
+"kunnen worden. Je kunt HTTP requests uitschakelen op de <a href=\"%1$s"
+"\">instellingen pagina</a> en je blocks handmatig updaten."
+
+#: assets/inc/class.MCBSettings.php:16
+msgid "Debugging"
+msgstr "Debuggen"
+
+#: assets/inc/class.MCBSettings.php:18
+msgid "Disable HTTP Requests"
+msgstr "Zet HTTP Requests uit"
+
+#: assets/inc/class.MCBSettings.php:18
+msgid ""
+"Multiple content blocks initializes it's blocks through an HTTP request. "
+"This way it 'knows' what blocks you want to use on a certain page. Sometimes "
+"these HTTP requests can cause bugs, for example: when they're not allowed by "
+"the server or the blocks are wrapped in conditional statement like "
+"is_user_logged_in(). You can disable them here."
+msgstr ""
+"Multiple content blocks initialiseert zijn blocks door middel van een HTTP "
+"request. Op deze manier 'weet' hij welke blocks je wilt gebruiken op een "
+"bepaalde pagina. Soms kunnen deze HTTP requests bugs veroorzaken, "
+"bijvoorbeeld: wanneer ze geen toegang hebben van de server of wanneer de "
+"blocks in een conditionele statement zoals is_user_logged_in() gewikkeld "
+"zijn. Je kunt ze hier compleet uitzetten."
+
+#: assets/inc/class.MCBSettings.php:21
+msgid "Show inactive blocks"
+msgstr "Toon inactieve blocks"
+
+#: assets/inc/class.MCBSettings.php:21
+msgid ""
+"Sometimes blocks are renamed or in some other way the content is lost. This "
+"activates a new meta box on all edit pages with inactive blocks."
+msgstr ""
+"Soms zijn blocks hernoemd of de content is op een andere manier verloren "
+"geraakt. Dit activeert een nieuwe meta box op alle bewerk-pagina's waar de "
+"inactieve blocks in staan."
+
+#: assets/inc/class.MCBSettings.php:29
+msgid ""
+"You're probably having problems showing the right blocks or losing content "
+"in some way. Adjust the settings below for some more comfort while using "
+"this plugin."
+msgstr ""
+"Je hebt waarschijnlijk problemen met het tonen van de juiste blocks of het "
+"kwijtraken van content. Pas de instellingen hieronder aan om wat meer "
+"comfort te hebben bij het gebruiken van deze plugin."
 
 #~ msgid ""
 #~ "The template that this post uses does not contain any content blocks."

@@ -3,7 +3,7 @@
 Plugin Name: Multiple content blocks
 Plugin URI: https://github.com/trendwerk/multiple-content-blocks/
 Description: Allow for more content blocks in WordPress than just the one.
-Version: 3.0.5
+Version: 3.1
 Author: Ontwerpstudio Trendwerk
 Author URI: https://github.com/trendwerk/
 */
@@ -11,6 +11,7 @@ Author URI: https://github.com/trendwerk/
 define('MCB_URL',plugins_url('/',__FILE__));
 
 include('assets/inc/class.MCB.php');
+include('assets/inc/class.MCBSettings.php');
 include('assets/inc/functions.template-tags.php');
 
 /**
@@ -38,7 +39,12 @@ function mcb_upgrade() {
 			endforeach;
 		endif;
 		
-		update_option('mcb-3.0-migration','true');
+		update_option('mcb-3.0-migration',true);
+	elseif(!get_option('mcb-3.1-migration')) :
+		//Prepend meta_key with an underscore so WordPress won't show it in Custom Fields
+		global $wpdb;
+		$wpdb->query("UPDATE ".$wpdb->postmeta." SET meta_key = Concat('_',meta_key) WHERE meta_key LIKE 'mcb-%'");		
+		update_option('mcb-3.1-migration',true);
 	endif;
 }
 add_action('init','mcb_upgrade');
