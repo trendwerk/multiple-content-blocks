@@ -143,7 +143,7 @@ class MCB {
 			
 			if($blocks) :
 				foreach($blocks as $id=>$name) :
-					if($_POST[$id]) :
+					if(isset($_POST[$id])) :
 						update_post_meta($post_id,'_mcb-'.$id,apply_filters('content_save_pre',$_POST[$id]));
 					endif;
 				endforeach;

@@ -47,6 +47,17 @@ function get_the_block($name,$args=array()) {
 }
 
 /**
+ * Check if the block has content
+ *
+ * @param string $name
+ * @param array $args Optional. Additional arguments, see get_the_block for more information
+ */
+function has_block($name,$args=array()) {
+	if(strlen(get_the_block($name,$args)) > 0) return true;
+	return false;
+}
+
+/**
  * Register a block if it does not exist already
  *
  * @param int $post_id
