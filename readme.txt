@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: Ontwerpstudio Trendwerk, Harold Angenent
-Donate link: http://plugins.trendwerk.nl
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBXMSEW2U6MBE
 Tags: multiple,content,blocks,multiplecontent,page,pageblocks,columns,custom
 Requires at least: 3.0
 Tested up to: 3.6
