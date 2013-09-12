@@ -38,7 +38,7 @@ class MCB {
 		global $post;
 		
 		$type = get_post_type_object($post->post_type);
-		if($type->public && $this->get_blocks($post->ID)) add_meta_box('multiple-content-blocks-box',__('Multiple content blocks','mcb'),array($this,'meta_box'),$post->post_type,'normal','high');
+		if($this->get_blocks($post->ID)) add_meta_box('multiple-content-blocks-box',__('Multiple content blocks','mcb'),array($this,'meta_box'),$post->post_type,'normal','high');
 		
 		if((bool) get_option('mcb-show-inactive-blocks') === true && $this->get_inactive_blocks($post->ID)) add_meta_box('multiple-content-blocks-box-inactive',__('Multiple content blocks (inactive)','mcb'),array($this,'meta_box_inactive'),$post->post_type,'normal','high');
 	}
@@ -176,8 +176,9 @@ class MCB {
 		if((bool) get_option('mcb-disable-http-requests') === true) return true;
 		
 		$post = get_post($post_id);
+		$type = get_post_type_object($post->post_type);
 		
-		if($post->post_status == 'publish') :
+		if($post->post_status == 'publish' && $type->public) :
 			$request = wp_remote_get(get_permalink($post_id));
 			if(is_wp_error($request) || $request['response']['code'] != 200) :			
 				//HTTP Request failed: Tell the user to do this manually
