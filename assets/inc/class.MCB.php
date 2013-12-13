@@ -137,17 +137,33 @@ class MCB {
 	 * @param int $post_id
 	 */
 	function save_blocks($post_id) {
-		if(!wp_is_post_revision($post_id) && !wp_is_post_autosave($post_id) && ((!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || @$_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest'))) :
-			$blocks = $this->get_blocks($post_id);
-			if(is_wp_error($blocks)) $blocks = $this->get_blocks($post_id,false);
+		/**
+		 * Perform checks
+		 */
+		if( wp_is_post_revision( $post_id ) || wp_is_post_autosave( $post_id ) )
+			return;
+
+		if( isset( $_REQUEST['doing_wp_cron'] ) )
+			return;
 			
-			if($blocks) :
-				foreach($blocks as $id=>$name) :
-					if(isset($_POST[$id])) :
-						update_post_meta($post_id,'_mcb-'.$id,apply_filters('content_save_pre',$_POST[$id]));
-					endif;
-				endforeach;
-			endif;
+		if( $_REQUEST['post_view'] == 'list' )
+		    return;
+
+		if( $this->post_type != $_POST['post_type'] )
+			return;
+
+		/**
+		 * Save data
+		 */
+		$blocks = $this->get_blocks($post_id);
+		if(is_wp_error($blocks)) $blocks = $this->get_blocks($post_id,false);
+		
+		if($blocks) :
+			foreach($blocks as $id=>$name) :
+				if(isset($_POST[$id])) :
+					update_post_meta($post_id,'_mcb-'.$id,apply_filters('content_save_pre',$_POST[$id]));
+				endif;
+			endforeach;
 		endif;
 	}
 	
@@ -217,6 +233,4 @@ class MCB {
 		
 		return $inactive_blocks;
 	}
-}
-new MCB;
-?>
+} new MCB;
