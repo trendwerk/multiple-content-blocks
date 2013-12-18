@@ -18,17 +18,20 @@ Place one of the template tags in a WordPress template. When that template is us
 
 Template tags
 --------------
-	the_block($name)
+	the_block( $name, $args )
 This will display the $name content block
 
-	get_the_block($name)
+	get_the_block( $name, $args )
 This will get $name content block's content, for you to process
+
+	has_block( $name, $args )
+Will check if a block exists and has content
 
 Additional options
 --------------
-	the_block($name,array(
+	the_block( $name, array(
 		'type' => 'one-liner',
 		'apply_filters' => false
-	))
+	) )
 - Won't display a WYSIWYG editor, but a plain one line text field (input type="text").
 - Won't apply filters
