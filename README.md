@@ -30,7 +30,7 @@ Will check if a block exists and has content
 Additional options
 --------------
 	the_block( $name, array(
-		'type' => 'one-liner',
+		'type'          => 'one-liner',
 		'apply_filters' => false
 	) )
 - Won't display a WYSIWYG editor, but a plain one line text field (input type="text").
