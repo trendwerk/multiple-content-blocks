@@ -1,6 +1,9 @@
 <?php
 /**
  * Multiple content blocks template tags
+ *
+ * @package MCB
+ * @subpackage Template_Tags
  */
 
 /**
@@ -11,8 +14,8 @@
  *
  * @return string
  */
-function the_block($name,$args=array()) {
-	echo get_the_block($name,$args);
+function the_block( $name, $args = array() ) {
+	echo get_the_block( $name, $args );
 }
 
 /**
@@ -25,23 +28,26 @@ function the_block($name,$args=array()) {
  *
  * @return string
  */
-function get_the_block($name,$args=array()) {
-	if(!empty($name)) :
+function get_the_block( $name, $args = array() ) {
+	if( ! empty( $name ) ) {
 		$post = mcb_get_post();
 
 		$defaults = array(
-			'type' => 'editor',
+			'type'          => 'editor',
 			'apply_filters' => true
 		);
-		$args = wp_parse_args($args, $defaults);
+		$args = wp_parse_args( $args, $defaults );
 		
-		mcb_register_block($post->ID,$name,$args['type']);
+		mcb_register_block( $post->ID, $name, $args['type'] );
 		
-		$meta = get_post_meta($post->ID,'_mcb-'.sanitize_title($name),true);
+		$meta = get_post_meta( $post->ID, '_mcb-' . sanitize_title( $name ), true );
 		
-		if($args['apply_filters']) return apply_filters('the_content',$meta);
-		if($meta && count($meta) > 0) return htmlentities($meta,null,'UTF-8',false);
-	endif;
+		if( $args['apply_filters'] )
+			return apply_filters( 'the_content', $meta );
+
+		if( $meta && 0 < count( $meta ) )
+			return htmlentities( $meta, null, 'UTF-8', false );
+	}
 	
 	return '';
 }
@@ -52,8 +58,10 @@ function get_the_block($name,$args=array()) {
  * @param string $name
  * @param array $args Optional. Additional arguments, see get_the_block for more information
  */
-function has_block($name,$args=array()) {
-	if(strlen(get_the_block($name,$args)) > 0) return true;
+function has_block( $name, $args = array() ) {
+	if( 0 < strlen( get_the_block( $name, $args ) ) ) 
+		return true;
+
 	return false;
 }
 
@@ -64,16 +72,22 @@ function has_block($name,$args=array()) {
  * @param string $name The name of the block
  * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
  */
-function mcb_register_block($post_id,$name,$type='editor') {
-	if($name == 'blocks') return;
+function mcb_register_block( $post_id, $name, $type = 'editor' ) {
+	if( 'blocks' == $name )
+		return;
 
-	if(!mcb_block_exists($post_id,$name,$type)) {
-		$blocks = get_post_meta($post_id,'_mcb-blocks',true);
-		if(!is_array($blocks)) $blocks = array();
+	if( ! mcb_block_exists( $post_id, $name, $type ) ) {
+		$blocks = get_post_meta( $post_id, '_mcb-blocks', true );
+
+		if( ! is_array( $blocks ) )
+			$blocks = array();
 		
-		$blocks[sanitize_title($name)] = array('name' => $name, 'type' => $type);
+		$blocks[ sanitize_title( $name ) ] = array(
+			'name' => $name, 
+			'type' => $type
+		);
 		
-		update_post_meta($post_id,'_mcb-blocks',$blocks);
+		update_post_meta( $post_id, '_mcb-blocks', $blocks );
 	}
 }
 
@@ -85,21 +99,21 @@ function mcb_register_block($post_id,$name,$type='editor') {
  * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
  * @return bool
  */
-function mcb_block_exists($post_id,$name,$type='editor') {
-	$blocks = get_post_meta($post_id,'_mcb-blocks',true);
-	if(is_array($blocks) && in_array(sanitize_title($name), $blocks)) :
-		if(is_array($blocks[sanitize_title($name)])) :
-	  		$comparable_name = $blocks[sanitize_title($name)]['name'];
-			$comparable_type = $blocks[sanitize_title($name)]['type'];
-		else :
-			$comparable_name = $blocks[sanitize_title($name)];
+function mcb_block_exists( $post_id, $name, $type = 'editor' ) {
+	$blocks = get_post_meta( $post_id, '_mcb-blocks', true );
+
+	if( is_array( $blocks ) && in_array( sanitize_title( $name ), $blocks ) ) {
+		if( is_array( $blocks[ sanitize_title( $name ) ] ) ) {
+	  		$comparable_name = $blocks[ sanitize_title( $name ) ]['name'];
+			$comparable_type = $blocks[ sanitize_title( $name ) ]['type'];
+		} else {
+			$comparable_name = $blocks[ sanitize_title( $name ) ];
 			$comparable_type = 'editor';
-		endif;
+		}
 		
-		if($comparable_name == $name && $comparable_type == $type) :
+		if( $comparable_name == $name && $comparable_type == $type )
 	    	return true;
-		endif;
-	endif;
+	}
 	
 	return false;
 }
@@ -111,9 +125,9 @@ function mcb_refresh_blocks() {
 	$post = mcb_get_post();
 
 	if( isset( $post ) ) 
-		delete_post_meta($post->ID,'_mcb-blocks');
+		delete_post_meta( $post->ID, '_mcb-blocks' );
 }
-add_action('wp_head','mcb_refresh_blocks');
+add_action( 'wp_head', 'mcb_refresh_blocks' );
 
 /**
  * Get current post
