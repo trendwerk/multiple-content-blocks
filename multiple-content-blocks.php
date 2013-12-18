@@ -3,7 +3,7 @@
 Plugin Name: Multiple content blocks
 Plugin URI: https://github.com/trendwerk/multiple-content-blocks/
 Description: Allow for more content blocks in WordPress than just the one.
-Version: 3.1
+Version: 3.1.1
 Author: Ontwerpstudio Trendwerk
 Author URI: https://github.com/trendwerk/
 */
