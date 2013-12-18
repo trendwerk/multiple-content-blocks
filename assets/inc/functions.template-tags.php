@@ -27,8 +27,8 @@ function the_block($name,$args=array()) {
  */
 function get_the_block($name,$args=array()) {
 	if(!empty($name)) :
-		global $post;
-		
+		$post = mcb_get_post();
+
 		$defaults = array(
 			'type' => 'editor',
 			'apply_filters' => true
@@ -66,7 +66,7 @@ function has_block($name,$args=array()) {
  */
 function mcb_register_block($post_id,$name,$type='editor') {
 	if($name == 'blocks') return;
-	
+
 	if(!mcb_block_exists($post_id,$name,$type)) {
 		$blocks = get_post_meta($post_id,'_mcb-blocks',true);
 		if(!is_array($blocks)) $blocks = array();
@@ -108,8 +108,22 @@ function mcb_block_exists($post_id,$name,$type='editor') {
  * Reset which blocks are used when visiting the page
  */
 function mcb_refresh_blocks() {
-	global $post;
-	if(isset($post)) delete_post_meta($post->ID,'_mcb-blocks');
+	$post = mcb_get_post();
+
+	if( isset( $post ) ) 
+		delete_post_meta($post->ID,'_mcb-blocks');
 }
 add_action('wp_head','mcb_refresh_blocks');
-?>
+
+/**
+ * Get current post
+ */
+function mcb_get_post() {
+	global $post;
+	$block_post = $post;
+
+	if( 'page' == get_option( 'show_on_front' ) && is_home() && ! $GLOBALS['wp_query']->in_the_loop )
+		$block_post = get_post( get_option( 'page_for_posts' ) );
+
+	return $block_post;
+}

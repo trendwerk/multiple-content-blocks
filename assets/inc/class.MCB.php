@@ -149,9 +149,6 @@ class MCB {
 		if( $_REQUEST['post_view'] == 'list' )
 		    return;
 
-		if( $this->post_type != $_POST['post_type'] )
-			return;
-
 		/**
 		 * Save data
 		 */
