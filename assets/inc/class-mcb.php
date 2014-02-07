@@ -224,7 +224,7 @@ class MCB {
 			$request = wp_remote_get( get_permalink( $post_id ) );
 
 			if( is_wp_error( $request ) || 200 != $request['response']['code'] ) //HTTP Request failed: Tell the user to do this manually
-				return new WP_Error( 'mcb', sprintf( __( 'HTTP requests using <a href="http://codex.wordpress.org/Function_API/wp_remote_get" target="_blank">wp_remote_get</a> do not seem to work. This means the blocks cannot be initialized automatically. You can turn off HTTP requests altogether on the <a href="%1$s">options page</a> and manually update your blocks.', 'mcb' ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
+				return new WP_Error( 'mcb', sprintf( __( 'HTTP requests using <a href="http://codex.wordpress.org/Function_API/wp_remote_get" target="_blank">wp_remote_get</a> do not seem to work. This means the blocks cannot be initialized automatically. You can turn off HTTP requests altogether on the <a href="%1$s">options page</a> and manually update your blocks.<br /><br />To manually update the blocks for this post, <a href="' . get_permalink( $post_id ) . '">click here</a> and then reload this page.', 'mcb' ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
 		}
 		
 		return true;
