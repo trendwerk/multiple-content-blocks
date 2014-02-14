@@ -223,8 +223,12 @@ class MCB {
 		if( 'publish' == $post->post_status && $type->public ) {
 			$request = wp_remote_get( get_permalink( $post_id ) );
 
-			if( is_wp_error( $request ) || 200 != $request['response']['code'] ) //HTTP Request failed: Tell the user to do this manually
-				return new WP_Error( 'mcb', sprintf( __( 'HTTP requests using <a href="http://codex.wordpress.org/Function_API/wp_remote_get" target="_blank">wp_remote_get</a> do not seem to work. This means the blocks cannot be initialized automatically. You can turn off HTTP requests altogether on the <a href="%1$s">options page</a> and manually update your blocks.<br /><br />To manually update the blocks for this post, <a href="' . get_permalink( $post_id ) . '">click here</a> and then reload this page.', 'mcb' ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
+			if( is_wp_error( $request ) || 200 != $request['response']['code'] ) //HTTP Request failed: Tell the user to do this manually					
+				return new WP_Error( 'mcb', 
+					__( 'It doesn\'t look like we can automatically initialize the blocks in this ' . strtolower( $type->labels->singular_name ) . '.' ) . '<br />' .
+					__( 'To fix this, <a href="' . get_permalink( $post_id ) . '">click here</a> to visit the ' . strtolower( $type->labels->singular_name ) . ' in your theme and then try again.' ) . '<br /><br />' .
+					__( 'To turn off this option altogether, go to the <a href="' . admin_url( 'options-general.php?page=mcb-settings' ) . '">Multiple Content Blocks settings page</a> and disable HTTP Requests. You will still need to perform the steps above.' )
+				);
 		}
 		
 		return true;
