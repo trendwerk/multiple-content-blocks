@@ -224,11 +224,7 @@ class MCB {
 			$request = wp_remote_get( get_permalink( $post_id ) );
 
 			if( is_wp_error( $request ) || 200 != $request['response']['code'] ) //HTTP Request failed: Tell the user to do this manually					
-				return new WP_Error( 'mcb', 
-					__( 'It doesn\'t look like we can automatically initialize the blocks in this ' . strtolower( $type->labels->singular_name ) . '.' ) . '<br />' .
-					__( 'To fix this, <a href="' . get_permalink( $post_id ) . '">click here</a> to visit the ' . strtolower( $type->labels->singular_name ) . ' in your theme and then try again.' ) . '<br /><br />' .
-					__( 'To turn off this option altogether, go to the <a href="' . admin_url( 'options-general.php?page=mcb-settings' ) . '">Multiple Content Blocks settings page</a> and disable HTTP Requests. You will still need to perform the steps above.' )
-				);
+				return new WP_Error( 'mcb', sprintf( __( '<p>It doesn\'t look like we can automatically initialize the blocks. <a href="%1$s" target="_blank">Visit this page</a> in the front-end and then try again.</p><p>To turn off this option entirely, go to the <a href="%2$s">settings page</a> and disable HTTP Requests. You will still need to perform the steps above.</p>', 'mcb' ), get_permalink( $post_id ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
 		}
 		
 		return true;

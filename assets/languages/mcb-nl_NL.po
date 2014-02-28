@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Multiple content blocks\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-18 17:57+0100\n"
-"PO-Revision-Date: 2013-12-18 17:58+0100\n"
+"POT-Creation-Date: 2014-02-28 14:35+0100\n"
+"PO-Revision-Date: 2014-02-28 14:43+0100\n"
 "Last-Translator: Harold <harold@trendwerk.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,90 +14,15 @@ msgstr ""
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: assets/inc/class.MCB.php:31 assets/inc/class.MCB.php:131
-msgid "Show"
-msgstr "Toon"
-
-#: assets/inc/class.MCB.php:32
-msgid "Hide"
-msgstr "Verberg"
-
-#: assets/inc/class.MCB.php:33
-msgid ""
-"Are you sure you want to delete this block entirely? It will be lost forever!"
-msgstr ""
-"Weet je zeker dat je deze block compleet wilt verwijderen? Hij zal voor "
-"altijd verloren gaan!"
-
-#: assets/inc/class.MCB.php:46 assets/inc/class.MCBSettings.php:57
-#: assets/inc/class.MCBSettings.php:70
-msgid "Multiple content blocks"
-msgstr "Multiple content blocks"
-
-#: assets/inc/class.MCB.php:49
-msgid "Multiple content blocks (inactive)"
-msgstr "Multiple content blocks (inactief)"
-
-#: assets/inc/class.MCB.php:87
-msgid "Help! These are not the right blocks."
-msgstr "Help! Dit zijn niet de juiste blocks."
-
-#: assets/inc/class.MCB.php:90
-msgid "Refresh"
-msgstr "Vernieuw"
-
-#: assets/inc/class.MCB.php:95
-msgid ""
-"That's right. When you have HTTP requests switched off, you have to refresh "
-"the blocks manually by visiting the page. "
-msgstr ""
-"Inderdaad. Wanneer je HTTP requests uit hebt staan, moet je de blocks "
-"handmatig vernieuwen door de pagina te bezoeken."
-
-#: assets/inc/class.MCB.php:118
-msgid "Block ID"
-msgstr "Block ID"
-
-#: assets/inc/class.MCB.php:119
-msgid "Actions"
-msgstr "Acties"
-
-#: assets/inc/class.MCB.php:132
-msgid "Delete"
-msgstr "Verwijderen"
-
-#: assets/inc/class.MCB.php:138
-msgid ""
-"The content displayed below will not be saved. This is just for recovery "
-"purposes."
-msgstr ""
-"De onderstaande content zal niet opgeslagen worden. Dit dient alleen om "
-"content te herstellen."
-
-#: assets/inc/class.MCB.php:227
-#, php-format
-msgid ""
-"HTTP requests using <a href=\"http://codex.wordpress.org/Function_API/"
-"wp_remote_get\" target=\"_blank\">wp_remote_get</a> do not seem to work. "
-"This means the blocks cannot be initialized automatically. You can turn off "
-"HTTP requests altogether on the <a href=\"%1$s\">options page</a> and "
-"manually update your blocks."
-msgstr ""
-"HTTP requests door middel van <a href=\"http://codex.wordpress.org/"
-"Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a> lijken niet "
-"te werken. Dit betekent dat de blokken niet automatisch geïnitialiseerd "
-"kunnen worden. Je kunt HTTP requests uitschakelen op de <a href=\"%1$s"
-"\">instellingen pagina</a> en je blocks handmatig updaten."
-
-#: assets/inc/class.MCBSettings.php:19
+#: assets/inc/class-mcb-settings.php:19
 msgid "Debugging"
 msgstr "Debuggen"
 
-#: assets/inc/class.MCBSettings.php:21
+#: assets/inc/class-mcb-settings.php:21
 msgid "Disable HTTP Requests"
 msgstr "Zet HTTP Requests uit"
 
-#: assets/inc/class.MCBSettings.php:23
+#: assets/inc/class-mcb-settings.php:23
 msgid ""
 "Multiple content blocks initializes it's blocks through an HTTP request. "
 "This way it 'knows' what blocks you want to use on a certain page. Sometimes "
@@ -112,11 +37,11 @@ msgstr ""
 "blocks in een conditionele statement zoals is_user_logged_in() gewikkeld "
 "zijn. Je kunt ze hier compleet uitzetten."
 
-#: assets/inc/class.MCBSettings.php:27
+#: assets/inc/class-mcb-settings.php:27
 msgid "Show inactive blocks"
 msgstr "Toon inactieve blocks"
 
-#: assets/inc/class.MCBSettings.php:29
+#: assets/inc/class-mcb-settings.php:29
 msgid ""
 "Sometimes blocks are renamed or in some other way the content is lost. This "
 "activates a new meta box on all edit pages with inactive blocks."
@@ -125,7 +50,7 @@ msgstr ""
 "geraakt. Dit activeert een nieuwe meta box op alle bewerk-pagina's waar de "
 "inactieve blocks in staan."
 
-#: assets/inc/class.MCBSettings.php:38
+#: assets/inc/class-mcb-settings.php:38
 msgid ""
 "You're probably having problems showing the right blocks or losing content "
 "in some way. Adjust the settings below for some more comfort while using "
@@ -134,6 +59,94 @@ msgstr ""
 "Je hebt waarschijnlijk problemen met het tonen van de juiste blocks of het "
 "kwijtraken van content. Pas de instellingen hieronder aan om wat meer "
 "comfort te hebben bij het gebruiken van deze plugin."
+
+#: assets/inc/class-mcb-settings.php:57 assets/inc/class-mcb-settings.php:70
+#: assets/inc/class-mcb.php:46
+msgid "Multiple content blocks"
+msgstr "Multiple content blocks"
+
+#: assets/inc/class-mcb.php:31 assets/inc/class-mcb.php:131
+msgid "Show"
+msgstr "Toon"
+
+#: assets/inc/class-mcb.php:32
+msgid "Hide"
+msgstr "Verberg"
+
+#: assets/inc/class-mcb.php:33
+msgid ""
+"Are you sure you want to delete this block entirely? It will be lost forever!"
+msgstr ""
+"Weet je zeker dat je deze block compleet wilt verwijderen? Hij zal voor "
+"altijd verloren gaan!"
+
+#: assets/inc/class-mcb.php:49
+msgid "Multiple content blocks (inactive)"
+msgstr "Multiple content blocks (inactief)"
+
+#: assets/inc/class-mcb.php:87
+msgid "Help! These are not the right blocks."
+msgstr "Help! Dit zijn niet de juiste blocks."
+
+#: assets/inc/class-mcb.php:90
+msgid "Refresh"
+msgstr "Vernieuw"
+
+#: assets/inc/class-mcb.php:95
+msgid ""
+"That's right. When you have HTTP requests switched off, you have to refresh "
+"the blocks manually by visiting the page. "
+msgstr ""
+"Inderdaad. Wanneer je HTTP requests uit hebt staan, moet je de blocks "
+"handmatig vernieuwen door de pagina te bezoeken."
+
+#: assets/inc/class-mcb.php:118
+msgid "Block ID"
+msgstr "Block ID"
+
+#: assets/inc/class-mcb.php:119
+msgid "Actions"
+msgstr "Acties"
+
+#: assets/inc/class-mcb.php:132
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: assets/inc/class-mcb.php:138
+msgid ""
+"The content displayed below will not be saved. This is just for recovery "
+"purposes."
+msgstr ""
+"De onderstaande content zal niet opgeslagen worden. Dit dient alleen om "
+"content te herstellen."
+
+#: assets/inc/class-mcb.php:227
+#, php-format
+msgid ""
+"<p>It doesn't look like we can automatically initialize the blocks. <a href="
+"\"%1$s\" target=\"_blank\">Visit this page</a> in the front-end and then try "
+"again.</p><p>To turn off this option entirely, go to the <a href=\"%2$s"
+"\">settings page</a> and disable HTTP Requests. You will still need to "
+"perform the steps above.</p>"
+msgstr ""
+"<p>Het lijkt erop dat we de content blocks niet automatisch kunnen "
+"initialiseren. <a href=\"%1$s\" target=\"_blank\">Bezoek deze pagina</a> in "
+"de front-end en probeer het opnieuw.</p><p>Om deze optie compleet uit te "
+"schakelen, ga naar de <a href=\"%2$s\">instellingen pagina</a> en schakel "
+"HTTP requests uit. Je moet nog steeds de bovenstaande stappen uitvoeren.</p>"
+
+#~ msgid ""
+#~ "HTTP requests using <a href=\"http://codex.wordpress.org/Function_API/"
+#~ "wp_remote_get\" target=\"_blank\">wp_remote_get</a> do not seem to work. "
+#~ "This means the blocks cannot be initialized automatically. You can turn "
+#~ "off HTTP requests altogether on the <a href=\"%1$s\">options page</a> and "
+#~ "manually update your blocks."
+#~ msgstr ""
+#~ "HTTP requests door middel van <a href=\"http://codex.wordpress.org/"
+#~ "Function_API/wp_remote_get\" target=\"_blank\">wp_remote_get</a> lijken "
+#~ "niet te werken. Dit betekent dat de blokken niet automatisch "
+#~ "geïnitialiseerd kunnen worden. Je kunt HTTP requests uitschakelen op de "
+#~ "<a href=\"%1$s\">instellingen pagina</a> en je blocks handmatig updaten."
 
 #~ msgid ""
 #~ "The template that this post uses does not contain any content blocks."
