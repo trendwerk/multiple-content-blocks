@@ -1,18 +1,18 @@
 === Plugin Name ===
 Contributors: Ontwerpstudio Trendwerk, Harold Angenent
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBXMSEW2U6MBE
-Tags: multiple,content,blocks,multiplecontent,page,pageblocks,columns,custom
+Tags: multiple,content,blocks,multiplecontent,page,pageblocks,columns,column,custom
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: 3.1.1
 
-Allow for more content blocks in WordPress than just the one.
+Allow more content blocks in WordPress.
 
 == Description ==
 
-Allow for more content blocks in WordPress than just the one.
+Allows more content blocks in WordPress than just one.
 
-Create columns or other page-specific content outside of the loop. Without being able to screw up the lay-out.
+Create columns or other page-specific content outside of the loop. Without your clients being able to screw up the lay-out.
 
 == Installation ==
 
