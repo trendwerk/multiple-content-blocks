@@ -65,14 +65,14 @@ class MCB {
 			foreach( $blocks as $id => $block ) {
 
 				if( is_array( $block ) ) {
-					$name = $block['name'];
+					$label = $block['label'];
 					$type = $block['type'];
 				} else {
-					$name = $block;
+					$label = $block;
 					$type = 'editor';
 				}
 
-				echo '<p><strong>' . $name . '</strong></p>';
+				echo '<p><strong>' . $label . '</strong></p>';
 
 				if( 'one-liner' == $type )
 				  echo '<input type="text" name="' . $id . '" value="' . htmlentities( get_post_meta( $post->ID, '_mcb-' . $id, true ), null, 'UTF-8', false ) . '" />';
@@ -183,7 +183,7 @@ class MCB {
 			$blocks = $this->get_blocks( $post_id, false );
 		
 		if( $blocks ) {
-			foreach( $blocks as $id => $name ) {
+			foreach( $blocks as $id => $args ) {
 				if( isset( $_POST[ $id ] ) )
 					update_post_meta( $post_id, '_mcb-' . $id, apply_filters( 'content_save_pre', $_POST[ $id ] ) );
 			}
