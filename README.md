@@ -33,7 +33,7 @@ Additional arguments
 		'label'         => __( 'Admin label', 'text-domain' ),
 		'type'          => 'one-liner',
 		'apply_filters' => false
-	) )
+	) );
 
 ### label
 *(string)* Label for the admin area.
