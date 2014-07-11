@@ -45,9 +45,8 @@ Default: *None*
 
 Default: *editor*
 
-**editor**: WordPress' WYSIWYG editor.
-
-**one-liner**: A plain one line text field.
+- **editor**: WordPress' WYSIWYG editor.
+- **one-liner**: A plain one line text field.
 
 ### apply_filters
 *(boolean)* Whether to apply `the_content` filters or not.
