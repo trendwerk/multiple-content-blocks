@@ -35,17 +35,21 @@ Additional arguments
 		'apply_filters' => false
 	) )
 
-**label**
+### label
 *(string)* Label for the admin area.
+
 Default: *None*
 
-**type** 
+### type
 (string) The type of content block.
+
 Default: *editor*
 
 **editor**: WordPress' WYSIWYG editor.
+
 **one-liner**: A plain one line text field.
 
-**apply_filters**
+### apply_filters
 (boolean) Whether to apply `the_content` filters or not.
+
 Default: *true*
