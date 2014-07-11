@@ -41,7 +41,7 @@ Additional arguments
 Default: *None*
 
 ### type
-(string) The type of content block.
+*(string)* The type of content block.
 
 Default: *editor*
 
@@ -50,6 +50,6 @@ Default: *editor*
 **one-liner**: A plain one line text field.
 
 ### apply_filters
-(boolean) Whether to apply `the_content` filters or not.
+*(boolean)* Whether to apply `the_content` filters or not.
 
 Default: *true*
