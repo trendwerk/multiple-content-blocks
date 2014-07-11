@@ -76,46 +76,17 @@ function mcb_register_block( $post_id, $name, $type = 'editor' ) {
 	if( 'blocks' == $name )
 		return;
 
-	if( ! mcb_block_exists( $post_id, $name, $type ) ) {
-		$blocks = get_post_meta( $post_id, '_mcb-blocks', true );
-
-		if( ! is_array( $blocks ) )
-			$blocks = array();
-		
-		$blocks[ sanitize_title( $name ) ] = array(
-			'name' => $name, 
-			'type' => $type
-		);
-		
-		update_post_meta( $post_id, '_mcb-blocks', $blocks );
-	}
-}
-
-/**
- * Checks if a block already exists
- *
- * @param int $post_id
- * @param string $name The name of the block
- * @param string $type optional The name of the style, either 'editor' or 'one-liner' (defaults to 'editor')
- * @return bool
- */
-function mcb_block_exists( $post_id, $name, $type = 'editor' ) {
 	$blocks = get_post_meta( $post_id, '_mcb-blocks', true );
 
-	if( is_array( $blocks ) && in_array( sanitize_title( $name ), $blocks ) ) {
-		if( is_array( $blocks[ sanitize_title( $name ) ] ) ) {
-	  		$comparable_name = $blocks[ sanitize_title( $name ) ]['name'];
-			$comparable_type = $blocks[ sanitize_title( $name ) ]['type'];
-		} else {
-			$comparable_name = $blocks[ sanitize_title( $name ) ];
-			$comparable_type = 'editor';
-		}
-		
-		if( $comparable_name == $name && $comparable_type == $type )
-	    	return true;
-	}
+	if( ! is_array( $blocks ) )
+		$blocks = array();
 	
-	return false;
+	$blocks[ sanitize_title( $name ) ] = array(
+		'name' => $name, 
+		'type' => $type
+	);
+	
+	update_post_meta( $post_id, '_mcb-blocks', $blocks );
 }
 
 /**
