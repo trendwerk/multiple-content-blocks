@@ -75,7 +75,7 @@ class MCB {
 				echo '<p><strong>' . $label . '</strong></p>';
 
 				if( 'one-liner' == $type )
-				  echo '<input type="text" name="' . $id . '" value="' . htmlentities( get_post_meta( $post->ID, '_mcb-' . $id, true ), null, 'UTF-8', false ) . '" />';
+				  echo '<input type="text" name="' . $id . '" value="' . htmlentities( get_post_meta( $post->ID, '_mcb-' . $id, true ), ENT_COMPAT, 'UTF-8', false ) . '" />';
 				else
 					wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true ), $id );
 			}
