@@ -110,6 +110,7 @@ add_action( 'wp_head', 'mcb_refresh_blocks' );
  */
 function mcb_get_post() {
 	global $post;
+	wp_reset_query();
 	$block_post = $post;
 
 	if( 'page' == get_option( 'show_on_front' ) && is_home() && ! $GLOBALS['wp_query']->in_the_loop )
