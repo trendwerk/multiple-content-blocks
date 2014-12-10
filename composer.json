@@ -1,0 +1,16 @@
+{
+	"name": "trendwerk/multiple-content-blocks",
+	"description": "Allow for more content blocks in WordPress than just the one.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Harold Angenent",
+			"email": "harold@trendwerk.nl"
+		}
+	],
+	"require": {
+		"php": ">=5.4",
+		"composer/installers": "v1.0.19"
+    }
+}
