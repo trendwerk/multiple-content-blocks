@@ -26,22 +26,30 @@ Place one of the template tags in a WordPress template. When that template is us
 
 Template tags
 --------------
-	the_block( $name, $args )
+```php
+the_block( $name, $args )
+```
 This will display the $name content block
 
-	get_the_block( $name, $args )
+```php
+get_the_block( $name, $args )
+```
 This will get $name content block's content, for you to process
 
-	has_block( $name, $args )
+```php
+has_block( $name, $args )
+```
 Will check if a block exists and has content
 
 Additional arguments
 --------------
-	the_block( $name, array(
-		'label'         => __( 'Admin label', 'text-domain' ),
-		'type'          => 'one-liner',
-		'apply_filters' => false
-	) );
+```php
+the_block( $name, array(
+	'label'         => __( 'Admin label', 'text-domain' ),
+	'type'          => 'one-liner',
+	'apply_filters' => false
+) );
+```
 
 ### label
 *(string)* Label for the admin area.
