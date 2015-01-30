@@ -1,14 +1,15 @@
 <?php
-/*
-Plugin Name: Multiple content blocks
-Plugin URI: https://github.com/trendwerk/multiple-content-blocks/
-Description: Allow for more content blocks in WordPress than just the one.
-Version: 3.2
-Author: Ontwerpstudio Trendwerk
-Author URI: https://github.com/trendwerk/
-*/
-
 /**
+ * Plugin Name: Multiple content blocks
+ * Description: Allow for more content blocks in WordPress than just the one.
+ *
+ * Plugin URI: https://github.com/trendwerk/multiple-content-blocks/
+ * 
+ * Author: Trendwerk
+ * Author URI: https://github.com/trendwerk/
+ * 
+ * Version: 3.2
+ *
  * @package MCB
  * @subpackage Main
  */

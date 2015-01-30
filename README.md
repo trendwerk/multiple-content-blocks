@@ -10,6 +10,19 @@ Installation
 2. Unpack and upload to the /wp-content/plugins/ folder
 3. Activate the plugin
 
+### Composer
+If you're using Composer to manage WordPress, add this plugin to your project's dependencies. Run:
+```sh
+composer require trendwerk/multiple-content-blocks 3.2
+```
+
+Or manually add it to your `composer.json`:
+```json
+"require": {
+	"trendwerk/multiple-content-blocks": "3.2"
+},
+```
+
 
 How to use
 --------------
