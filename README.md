@@ -47,7 +47,7 @@ Additional arguments
 the_block( $name, array(
 	'label'         => __( 'Admin label', 'text-domain' ),
 	'type'          => 'one-liner',
-	'apply_filters' => false
+	'apply_filters' => false,
 ) );
 ```
 
