@@ -6,11 +6,6 @@ Allow for more content blocks in WordPress than just the one.
 
 Installation
 --------------
-1. Download the zip
-2. Unpack and upload to the /wp-content/plugins/ folder
-3. Activate the plugin
-
-### Composer
 If you're using Composer to manage WordPress, add this plugin to your project's dependencies. Run:
 ```sh
 composer require trendwerk/multiple-content-blocks 3.2
