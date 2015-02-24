@@ -172,7 +172,7 @@ class MCB {
 		if( isset( $_REQUEST['doing_wp_cron'] ) )
 			return;
 			
-		if( isset( $_REQUEST['post_view'] ) && $_REQUEST['post_view'] == 'list' )
+		if( isset( $_REQUEST['post_view'] ) )
 		    return;
 
 		/**
