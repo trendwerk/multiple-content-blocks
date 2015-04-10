@@ -225,7 +225,15 @@ class MCB {
 		$type = get_post_type_object( $post->post_type );
 		
 		if( 'publish' == $post->post_status && $type->public ) {
-			$request = wp_remote_get( get_permalink( $post_id ) );
+			$args = array();
+			$request_url = get_permalink( $post_id );
+
+			if( isset( $_SERVER['PHP_AUTH_USER'] ) && 0 < strlen( $_SERVER['PHP_AUTH_USER'] ) && isset( $_SERVER['PHP_AUTH_PW'] ) && 0 < strlen( $_SERVER['PHP_AUTH_PW'] ) )
+				$args['headers'] = array(
+					'Authorization' => 'Basic ' . base64_encode( esc_attr( $_SERVER['PHP_AUTH_USER'] ) . ':' . esc_attr( $_SERVER['PHP_AUTH_PW'] ) ),
+				);
+
+			$request = wp_remote_get( $request_url, $args );
 
 			if( is_wp_error( $request ) || 200 != $request['response']['code'] ) //HTTP Request failed: Tell the user to do this manually					
 				return new WP_Error( 'mcb', sprintf( __( '<p>It doesn\'t look like we can automatically initialize the blocks. <a href="%1$s" target="_blank">Visit this page</a> in the front-end and then try again.</p><p>To turn off this option entirely, go to the <a href="%2$s">settings page</a> and disable HTTP Requests. You will still need to perform the steps above.</p>', 'mcb' ), get_permalink( $post_id ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
