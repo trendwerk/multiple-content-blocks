@@ -155,7 +155,7 @@ class MCB {
 	 * Maybe delete a block
 	 */
 	function maybe_delete_block() {
-		if( $_GET['delete_mcb'] ) {
+		if( isset( $_GET['delete_mcb'] ) ) {
 			global $post;
 			delete_post_meta( $post->ID, '_mcb-' . $_GET['delete_mcb'] );
 		}
@@ -255,7 +255,7 @@ class MCB {
 			foreach( $all_blocks as $inactive_block ) {
 				$id = str_replace( '_mcb-', '', $inactive_block->meta_key );
 				
-				if( $blocks[ $id ] )
+				if( isset( $blocks[ $id ] ) )
 					continue;
 				
 				$inactive_blocks[] = $inactive_block;
