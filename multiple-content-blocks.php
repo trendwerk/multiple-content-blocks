@@ -8,7 +8,7 @@
  * Author: Trendwerk
  * Author URI: https://github.com/trendwerk/
  * 
- * Version: 3.2
+ * Version: 3.2.1
  *
  * @package MCB
  * @subpackage Main
