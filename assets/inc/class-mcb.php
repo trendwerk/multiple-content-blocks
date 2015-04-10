@@ -77,7 +77,11 @@ class MCB {
 				if( 'one-liner' == $type )
 				  echo '<input type="text" name="' . $id . '" value="' . htmlentities( get_post_meta( $post->ID, '_mcb-' . $id, true ), ENT_COMPAT, 'UTF-8', false ) . '" />';
 				else
-					wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true ), $id );
+					wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true ), $id, array(
+						'tinymce'              => array(
+							'wp_autoresize_on' => false,
+						),
+					) );
 			}
 			
 			if( true === (bool) get_option( 'mcb-disable-http-requests' ) ) {
