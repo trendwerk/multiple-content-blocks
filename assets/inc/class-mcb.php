@@ -77,7 +77,7 @@ class MCB {
 				if( 'one-liner' == $type )
 				  echo '<input type="text" name="' . $id . '" value="' . htmlentities( get_post_meta( $post->ID, '_mcb-' . $id, true ), ENT_COMPAT, 'UTF-8', false ) . '" />';
 				else
-					wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true ), $id, array(
+					wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true ), '_mcb_' . $id, array(
 						'tinymce'              => array(
 							'wp_autoresize_on' => false,
 						),
@@ -140,7 +140,7 @@ class MCB {
 						<tr class="mcb-content">
 							<td colspan="2">
 								<p class="description"><?php _e( 'The content displayed below will not be saved. This is just for recovery purposes.', 'mcb' ); ?></p>
-								<?php wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true), $id . '-inactive', array( 'media_buttons' => false ) ); ?>
+								<?php wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true), '_mcb_' . $id . '_inactive', array( 'media_buttons' => false ) ); ?>
 							</td>
 						</tr>
 					<?php } ?>
@@ -188,8 +188,8 @@ class MCB {
 		
 		if( $blocks ) {
 			foreach( $blocks as $id => $args ) {
-				if( isset( $_POST[ $id ] ) )
-					update_post_meta( $post_id, '_mcb-' . $id, apply_filters( 'content_save_pre', $_POST[ $id ] ) );
+				if( isset( $_POST[ '_mcb_' . $id ] ) )
+					update_post_meta( $post_id, '_mcb-' . $id, apply_filters( 'content_save_pre', $_POST[ '_mcb_' . $id ] ) );
 			}
 		}
 	}
