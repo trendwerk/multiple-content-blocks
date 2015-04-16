@@ -21,7 +21,7 @@ class MCB {
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_css' ) );
 
 		//Allow auto-draft to be previewed
-		add_action( 'init', array( $this, 'auto_draft_preview' ) );
+		add_action( 'wp_loaded', array( $this, 'auto_draft_preview' ) );
 	}
 	
 	/**
