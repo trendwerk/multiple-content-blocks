@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: Ontwerpstudio Trendwerk, Harold Angenent
+Contributors: Harold Angenent, Trendwerk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBXMSEW2U6MBE
 Tags: multiple,content,blocks,multiplecontent,page,pageblocks,columns,column,custom
 Requires at least: 3.0
 Tested up to: 4.1.1
-Stable tag: 3.2.1
+Stable tag: 3.2.2
 
 Allow more content blocks in WordPress.
 
