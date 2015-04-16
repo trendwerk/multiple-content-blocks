@@ -28,6 +28,10 @@ Documentation: https://github.com/trendwerk/multiple-content-blocks/
 
 == Changelog ==
 
+= 3.2.2 =
+* Improvement: Support for drafts and auto-drafts, thanks for testing [Luuk de Vlieger](https://github.com/luukdv)
+* Bugfix: Fix one-liners not being saved properly in 3.2.1, props [Ross Grant](https://github.com/iamrossgrant)
+
 = 3.2.1 =
 * Feature: Added basic HTTP auth support
 * Improvement: Disabled auto resizing of content blocks for better usability
