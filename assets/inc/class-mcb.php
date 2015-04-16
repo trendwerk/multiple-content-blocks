@@ -19,6 +19,9 @@ class MCB {
 		
 		//Admin CSS
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_css' ) );
+
+		//Allow auto-draft to be previewed
+		add_action( 'init', array( $this, 'auto_draft_preview' ) );
 	}
 	
 	/**
@@ -224,10 +227,32 @@ class MCB {
 		$post = get_post( $post_id );
 		$type = get_post_type_object( $post->post_type );
 		
-		if( 'publish' == $post->post_status && $type->public ) {
+		if( $type->public ) {
 			$args = array();
+
 			$request_url = get_permalink( $post_id );
 
+			/**
+			 * Preview link (for drafts and auto-drafts)
+			 */
+			$request_url = apply_filters( 'preview_post_link', add_query_arg( '_mcb_preview', 'true', add_query_arg( 'preview', 'true', $request_url ) ) );
+
+			/**
+			 * Send (auth) cookies
+			 */
+			if( 0 < count( $_COOKIE ) ) {
+				$args['cookies'] = array();
+
+				foreach( $_COOKIE as $name => $value )
+					$args['cookies'][] = new WP_Http_Cookie( array(
+						'name'  => $name,
+						'value' => $value,
+					) );
+			}		
+
+			/**
+			 * Basic HTTP authentication
+			 */
 			if( isset( $_SERVER['PHP_AUTH_USER'] ) && 0 < strlen( $_SERVER['PHP_AUTH_USER'] ) && isset( $_SERVER['PHP_AUTH_PW'] ) && 0 < strlen( $_SERVER['PHP_AUTH_PW'] ) )
 				$args['headers'] = array(
 					'Authorization' => 'Basic ' . base64_encode( esc_attr( $_SERVER['PHP_AUTH_USER'] ) . ':' . esc_attr( $_SERVER['PHP_AUTH_PW'] ) ),
@@ -272,4 +297,29 @@ class MCB {
 		
 		return $inactive_blocks;
 	}
+
+	/**
+	 * Allow auto-draft to be previewed when MCB makes a request
+	 */
+	function auto_draft_preview() {
+		if( ! is_user_logged_in() )
+			return;
+
+		if( ! isset( $_GET['p'] ) && ! isset( $_GET['page_id'] ) )
+			return;
+
+		if( ! current_user_can( 'edit_post', isset( $_GET['p'] ) ? absint( $_GET['p'] ) : absint( $_GET['page_id'] ) ) )
+			return;
+
+		if( ! isset( $_GET['_mcb_preview'] ) || 'true' !== $_GET['_mcb_preview'] )
+			return;
+
+		global $wp_post_statuses;
+
+		if( ! isset( $wp_post_statuses['auto-draft'] ) )
+			return;
+
+		$wp_post_statuses['auto-draft']->protected = true;
+	}
+
 } new MCB;
