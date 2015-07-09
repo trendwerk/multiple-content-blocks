@@ -11,6 +11,6 @@
 	],
 	"require": {
 		"php": ">=5.4",
-		"composer/installers": "v1.0.19"
+		"composer/installers": "v1.0.*"
     }
 }
