@@ -3,7 +3,7 @@ Contributors: Harold Angenent, Trendwerk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBXMSEW2U6MBE
 Tags: multiple,content,blocks,multiplecontent,page,pageblocks,columns,column,custom
 Requires at least: 3.3
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: 3.2.2
 
 Allow more content blocks in WordPress.
