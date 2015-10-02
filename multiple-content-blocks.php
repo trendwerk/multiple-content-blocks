@@ -2,6 +2,7 @@
 /**
  * Plugin Name: Multiple content blocks
  * Description: Allow for more content blocks in WordPress than just the one.
+ * Text Domain: multiple-content-blocks
  *
  * Plugin URI: https://github.com/trendwerk/multiple-content-blocks/
  * 
@@ -24,7 +25,7 @@ include( 'assets/inc/template-tags.php' );
  * Add translation
  */
 function mcb_translation() {
-	load_plugin_textdomain( 'mcb', false, dirname( plugin_basename( __FILE__ ) ) . '/assets/languages/' );
+	load_plugin_textdomain( 'multiple-content-blocks', false, dirname( plugin_basename( __FILE__ ) ) . '/assets/languages/' );
 }
 add_action( 'plugins_loaded', 'mcb_translation' );
 

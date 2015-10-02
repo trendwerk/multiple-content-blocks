@@ -31,9 +31,9 @@ class MCB {
 		wp_enqueue_style( 'multiple-content-blocks', MCB_URL . 'assets/css/admin.css' );
 		wp_enqueue_script( 'multiple-content-blocks', MCB_URL . 'assets/js/admin.js', array( 'jquery' ) );
 		wp_localize_script( 'multiple-content-blocks', 'MCB', array(
-			'show'           => __( 'Show', 'mcb' ),
-			'hide'           => __( 'Hide', 'mcb' ),
-			'confirm_delete' => __( 'Are you sure you want to delete this block entirely? It will be lost forever!', 'mcb' ),
+			'show'           => __( 'Show', 'multiple-content-blocks' ),
+			'hide'           => __( 'Hide', 'multiple-content-blocks' ),
+			'confirm_delete' => __( 'Are you sure you want to delete this block entirely? It will be lost forever!', 'multiple-content-blocks' ),
 		) );
 	}
 	
@@ -46,10 +46,10 @@ class MCB {
 		$type = get_post_type_object( $post->post_type );
 
 		if( $this->get_blocks( $post->ID ) )
-			add_meta_box( 'multiple-content-blocks-box', __( 'Multiple content blocks', 'mcb' ), array( $this, 'meta_box' ), $post->post_type, 'normal', 'high' );
+			add_meta_box( 'multiple-content-blocks-box', __( 'Multiple content blocks', 'multiple-content-blocks' ), array( $this, 'meta_box' ), $post->post_type, 'normal', 'high' );
 		
 		if( true === (bool) get_option( 'mcb-show-inactive-blocks' ) && $this->get_inactive_blocks( $post->ID ) )
-			add_meta_box( 'multiple-content-blocks-box-inactive', __( 'Multiple content blocks (inactive)', 'mcb' ), array( $this, 'meta_box_inactive' ), $post->post_type, 'normal', 'high' );
+			add_meta_box( 'multiple-content-blocks-box-inactive', __( 'Multiple content blocks (inactive)', 'multiple-content-blocks' ), array( $this, 'meta_box_inactive' ), $post->post_type, 'normal', 'high' );
 	}
 	
 	/**
@@ -91,15 +91,15 @@ class MCB {
 				?>
 
 				<h2>
-					<?php _e( 'Help! These are not the right blocks.', 'mcb' ); ?> 
+					<?php _e( 'Help! These are not the right blocks.', 'multiple-content-blocks' ); ?> 
 
 					<a class="button-secondary" target="_blank" href="<?php echo get_permalink( $post->ID ); ?>">
-						<?php _e( 'Refresh', 'mcb' ); ?>
+						<?php _e( 'Refresh', 'multiple-content-blocks' ); ?>
 					</a>
 				</h2>
 
 				<p class="http-off">
-					<?php _e( 'That\'s right. When you have HTTP requests switched off, you have to refresh the blocks manually by visiting the page. ', 'mcb' ); ?>
+					<?php _e( 'That\'s right. When you have HTTP requests switched off, you have to refresh the blocks manually by visiting the page. ', 'multiple-content-blocks' ); ?>
 				</p>
 
 				<?php
@@ -122,8 +122,8 @@ class MCB {
 
 				<thead>
 					<tr>
-						<th><strong><?php _e( 'Block ID', 'mcb' ); ?></strong></th>
-						<th><strong><?php _e( 'Actions', 'mcb' ); ?></strong></th>
+						<th><strong><?php _e( 'Block ID', 'multiple-content-blocks' ); ?></strong></th>
+						<th><strong><?php _e( 'Actions', 'multiple-content-blocks' ); ?></strong></th>
 					</tr>
 				</thead>
 
@@ -135,14 +135,14 @@ class MCB {
 							</td>
 
 							<td>
-								<a class="mcb-show"><?php _e( 'Show', 'mcb' ); ?></a> | 
-								<a class="mcb-delete" href="<?php echo get_edit_post_link( $post->ID ) . '&amp;delete_mcb=' . $id; ?>"><?php _e( 'Delete', 'mcb' ); ?></a>
+								<a class="mcb-show"><?php _e( 'Show', 'multiple-content-blocks' ); ?></a> | 
+								<a class="mcb-delete" href="<?php echo get_edit_post_link( $post->ID ) . '&amp;delete_mcb=' . $id; ?>"><?php _e( 'Delete', 'multiple-content-blocks' ); ?></a>
 							</td>
 						</tr>
 
 						<tr class="mcb-content">
 							<td colspan="2">
-								<p class="description"><?php _e( 'The content displayed below will not be saved. This is just for recovery purposes.', 'mcb' ); ?></p>
+								<p class="description"><?php _e( 'The content displayed below will not be saved. This is just for recovery purposes.', 'multiple-content-blocks' ); ?></p>
 								<?php wp_editor( get_post_meta( $post->ID, '_mcb-' . $id, true), '_mcb_' . $id . '_inactive', array( 'media_buttons' => false ) ); ?>
 							</td>
 						</tr>
@@ -261,7 +261,7 @@ class MCB {
 			$request = wp_remote_get( $request_url, $args );
 
 			if( is_wp_error( $request ) || 200 != $request['response']['code'] ) //HTTP Request failed: Tell the user to do this manually					
-				return new WP_Error( 'mcb', sprintf( __( '<p>It doesn\'t look like we can automatically initialize the blocks. <a href="%1$s" target="_blank">Visit this page</a> in the front-end and then try again.</p><p>To turn off this option entirely, go to the <a href="%2$s">settings page</a> and disable HTTP Requests. You will still need to perform the steps above.</p>', 'mcb' ), get_permalink( $post_id ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
+				return new WP_Error( 'mcb', sprintf( __( '<p>It doesn\'t look like we can automatically initialize the blocks. <a href="%1$s" target="_blank">Visit this page</a> in the front-end and then try again.</p><p>To turn off this option entirely, go to the <a href="%2$s">settings page</a> and disable HTTP Requests. You will still need to perform the steps above.</p>', 'multiple-content-blocks' ), get_permalink( $post_id ), admin_url( 'options-general.php?page=mcb-settings' ) ) );
 		}
 		
 		return true;
