@@ -6,7 +6,7 @@ Requires at least: 3.3
 Tested up to: 4.3
 Stable tag: 3.2.2
 
-Active development for this plugin has been discontinued. We would advice to use Advanced Custom Fields (http://www.advancedcustomfields.com/) as an alternative.
+Active development for this plugin has been discontinued.
 
 == Description ==
 
