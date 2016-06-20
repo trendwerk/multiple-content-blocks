@@ -6,27 +6,15 @@ Requires at least: 3.3
 Tested up to: 4.3
 Stable tag: 3.2.2
 
-Allow more content blocks in WordPress.
+Active development for this plugin has been discontinued. We would advice to use Advanced Custom Fields (http://www.advancedcustomfields.com/) as an alternative.
 
 == Description ==
 
-Allows more content blocks in WordPress than just one.
-
-Documentation: https://github.com/trendwerk/multiple-content-blocks/
-
-== Installation ==
-
-1. Download the zip
-2. Unpack and upload to the /wp-content/plugins/ folder
-3. Activate the plugin
-4. Use one of the template tags. Documentation: https://github.com/trendwerk/multiple-content-blocks/
-
-== Screenshots ==
-
-1. Use a template tag
-2. And get an extra editor when editing
+<strong>Active development for this plugin has been discontinued. We would advice to use Advanced Custom Fields (http://www.advancedcustomfields.com/) as an alternative.</strong>
 
 == Changelog ==
+
+<strong>Active development for this plugin has been discontinued. We would advice to use Advanced Custom Fields (http://www.advancedcustomfields.com/) as an alternative.</strong>
 
 = 3.2.2 =
 * Improvement: Support for drafts and auto-drafts, thanks for testing [Luuk de Vlieger](https://github.com/luukdv)
