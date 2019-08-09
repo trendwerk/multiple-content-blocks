@@ -59,7 +59,7 @@ function get_the_block( $name, $args = array() ) {
  * @param string $name
  * @param array $args Optional. Additional arguments, see get_the_block for more information
  */
-function has_block( $name, $args = array() ) {
+function mcb_has_block( $name, $args = array() ) {
 	if( 0 < strlen( get_the_block( $name, $args ) ) ) 
 		return true;
 
